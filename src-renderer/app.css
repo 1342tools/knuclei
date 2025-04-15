@@ -1,0 +1,325 @@
+:root {
+    --primary: #E76969; /* Keep primary color */
+    --primary-hover: #D25555; /* Keep primary hover color */
+    --text: #f4f4f5; /* Zinc 100 - slightly brighter */
+    --text-light: #a1a1aa; /* Zinc 400 */
+    --background: #18181b; /* Zinc 900 - neutral dark gray */
+    --border: #3f3f46; /* Zinc 700 */
+    --card-bg: #27272a; /* Zinc 800 - slightly lighter gray */
+    --card-border: #3f3f46; /* Zinc 700 */
+    --primary-rgb: 231, 105, 105; /* Same for dark theme */
+}
+
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@import 'tailwindcss';
+
+/* Reset and base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    color: var(--text); /* Use variable */
+    background-color: var(--background); /* Use variable */
+}
+
+a {
+    color: var(--primary); /* Use variable */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text); /* Use variable */
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text); /* Use variable */
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text); /* Use variable */
+}
+
+button {
+    cursor: pointer;
+}
+    
+/* Utility classes */
+/* .container class removed - handled by layout component */
+    
+.list-container { 
+    margin-top: 1.5rem;
+    border: 1px solid var(--border); /* Add border */
+    border-radius: 4px;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+     /* Use variable */
+     color: var(--text); /* Assuming white text on primary is desired for both themes */
+    border-radius: 4px;
+    border: 1px solid var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover); /* Use variable */
+    text-decoration: none;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary); /* Use variable */
+    border: 1px solid var(--primary); /* Use variable */
+}
+
+.btn-outline:hover {
+    background-color: var(--primary); /* Use variable */
+    color: white; /* Assuming white text on primary is desired for both themes */
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.error {
+    color: #dc2626;
+}
+
+.success {
+    color: #16a34a;
+}
+
+/* Layout styles */
+main {
+    min-height: calc(100vh); /* Viewport height minus header and footer */
+    /* padding: 1.5rem 0; */ /* Padding moved to .content in layout */
+}
+
+footer {
+    background-color: var(--card-bg); /* Use variable */
+    padding: 1rem 0;
+    border-top: 1px solid var(--border); /* Use variable */
+    text-align: center;
+    color: var(--text-light); /* Use variable */
+    font-size: 0.875rem;
+}
+
+.stats { 
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--card-bg); 
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border); 
+}
+
+/* Card style */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; /* Slightly larger radius for cards */
+    padding: 1.5rem; /* Standard padding */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Subtle shadow */
+}
+
+/* Form elements */
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--text);
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 231, 105, 105), 0.2); /* Use primary color with alpha */
+}
+
+.input[readonly] {
+    background-color: var(--card-bg); /* Slightly different bg for readonly */
+    cursor: default;
+}
+
+.input[disabled] {
+    background-color: var(--card-bg);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-checkbox {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    cursor: pointer;
+    appearance: none; /* Remove default appearance */
+    position: relative; /* For custom checkmark */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.form-checkbox:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.form-checkbox:checked::after { /* Custom checkmark */
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 0.05rem;
+    width: 0.3rem;
+    height: 0.6rem;
+    border: solid white; /* Checkmark color */
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.form-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 231, 105, 105), 0.2);
+}
+
+/* Terminal style */
+.terminal {
+    background-color: var(--card-bg); /* Use card background */
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.875rem;
+    overflow-y: auto; /* Enable scrolling */
+    color: var(--text); /* Default text color */
+}
+
+.terminal pre {
+    white-space: pre-wrap; /* Wrap long lines */
+    word-wrap: break-word;
+}
+
+/* Button variants */
+.btn-primary {
+    background-color: var(--primary);
+    color: white; /* Assuming white text on primary */
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
+}
+.btn-primary:disabled {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: var(--card-bg); /* Use card background */
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+    background-color: var(--border); /* Slightly darker on hover */
+    border-color: var(--border);
+}
+.btn-secondary:disabled {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Progress bar */
+.progress {
+    appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: var(--border); /* Track color */
+    border: none;
+}
+
+.progress::-webkit-progress-bar {
+    background-color: var(--border);
+    border-radius: 0.25rem;
+}
+
+.progress::-webkit-progress-value {
+    background-color: var(--primary); /* Bar color */
+    border-radius: 0.25rem;
+    transition: width 0.3s ease;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 16px; /* Adjust width as needed */
+    height: 8px; /* Adjust height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg); /* Use card background for the track */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--border); /* Use border color for the thumb */
+    border-radius: 4px;
+    border: 2px solid var(--card-bg); /* Creates padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary); /* Use primary color on hover */
+}
+
+/* Optional: Style the corner where vertical and horizontal scrollbars meet */
+::-webkit-scrollbar-corner {
+    background: var(--background); /* Use main background */
+}
+
+.progress::-moz-progress-bar {
+    background-color: var(--primary); /* Bar color */
+    border-radius: 0.25rem;
+    transition: width 0.3s ease;
+}
