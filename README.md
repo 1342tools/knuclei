@@ -4,21 +4,22 @@ A GUI interface for the tool [nuclei](https://github.com/projectdiscovery/nuclei
 
 ## Features
 
-(Add a brief description of the key features and functionality of the knuclei application here.)
+- Template Viewer
+- Prebuilt scans
+- All existing nuclei functionality accessibly through an easy to use GUI
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (Check `package.json` for recommended version)
+- Node.js 
 - npm
 
 ### Installation & Running
 
 1.  **Clone the repository (if you haven't already):**
     ```bash
-    # Replace with the actual repository URL if different
-    git clone <repository-url> knuclei
+    git clone https://github.com/1342tools/knuclei
     cd knuclei
     ```
 
@@ -54,4 +55,3 @@ This will generate packages for your current operating system in the `out` direc
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2025 codec-xyz
